@@ -21,14 +21,10 @@ AWS blog post ->https://aws.amazon.com/blogs/networking-and-content-delivery/sec
 * Update the backend configuration in the main tf file
     back end type s3 guide ->https://www.terraform.io/docs/language/settings/backends/s3.html
 * Update the provider block in the main tf file
-
 * Update the values in the tfvars file appropriately
 
 # Apply new code
 Navigate to the file path that the code repository was pulled to in command prompt or terminal (Mac)
-
-Run `terraform init`this will initialize terraform for the given enviromnet
-
-Run `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
-
-Run `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
+* Run `terraform init`this will initialize terraform for the given enviromnet
+* Run `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
+* Run `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
