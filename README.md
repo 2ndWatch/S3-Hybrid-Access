@@ -1,26 +1,19 @@
 # Purpose
-Welcome!This repository contains example code on how to create the solution architecture found in this internal 2nd Watch confluence page ->[https://2ndwatch.atlassian.net/wiki/spaces/BP/pages/2394587314/s3+Hybrid+Access+Solution+Architecture]. 
-This is intended to be used as example code only because most organizations will likely already have deployed some of these AWS services if not most.
+Welcome! This repository contains _example_ code on how to create hybrid connectivity to Amazon s3. This architecture contains multiple technologies working together to achieve the common goal of safe connectivity to s3. For more information see the links below:
+
+Internal 2nd Watch confluence page ->[https://2ndwatch.atlassian.net/wiki/spaces/BP/pages/2394587314/s3+Hybrid+Access+Solution+Architecture]
+
+AWS blog post ->[https://aws.amazon.com/blogs/networking-and-content-delivery/secure-hybrid-access-to-amazon-s3-using-aws-privatelink/]
+
+
 
 # High Level Design
-
-
-# Resources
-
-## Hybrid connectivity
-Interface VPC endpoints are provisioned in a shared services VPC and are accessible from on-premises networks. When interface endpoints are deployed with ENI’s (elastic network interfaces) and are assigned private IP address from the selected subnets within the VPC. To create the connectivity to the private IP addresses a Direct Connect or Site-to-Site will need to be provisioned. The Direct Connect will require a private VIF.
-
-## DNS
-A Route53 Private Hosted Zone is created with the regional domain name of the endpoint  (s3.region-name-amazonaws.com) A Route53 Inbound Resolver is needed for on-premises applications to resolve AWS Route53 DNS names. A conditional forwarder rule needs to be configured on the on-premises DNS solution so that DNS queries For AWS names are forwarded to Route53. Lastly, apex and wildcard A records are created in the private hosted zone and traffic is routed to the s3 VPC interface endpoint. 
-
-# Documentation
-Internal 2nd Watch confluence page for overview ->
-AWS blog post ->[https://aws.amazon.com/blogs/networking-and-content-delivery/secure-hybrid-access-to-amazon-s3-using-aws-privatelink/]
+![Screen Shot 2022-06-06 at 2 17 19 PM](https://user-images.githubusercontent.com/86376621/172231459-78da121d-f967-48e5-a0b1-ab53db36891e.png)
 
 # Prerequisites
 * Terraform Version 0.12 and later installation guide ->[https://learn.hashicorp.com/tutorials/terraform/install-cli]
 * AWS CLI Installation guide ->[https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html]
-* A Site-to-Site VPN or Direct Connect connection is required for this architecture
+* A Site-to-Site VPN or Direct Connect connection is required for this architecture **_Note:_ example code is not included for this**
 
 # Usage
 * Update the providers tf file's access key and secret access key values.
