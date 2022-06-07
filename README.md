@@ -1,9 +1,14 @@
 # Purpose
 Welcome! This repository contains _example_ code on how to create hybrid connectivity to Amazon s3. This architecture contains multiple technologies working together to achieve the common goal of safe connectivity to s3. For more information see the links below:
 
-* Internal 2nd Watch confluence page ->https://2ndwatch.atlassian.net/wiki/spaces/BP/pages/2394587314/s3+Hybrid+Access+Solution+Architecture
+* [Internal 2nd Watch confluence page](https://2ndwatch.atlassian.net/wiki/spaces/BP/pages/2394587314/s3+Hybrid+Access+Solution+Architecture)
 
-* AWS blog post ->https://aws.amazon.com/blogs/networking-and-content-delivery/secure-hybrid-access-to-amazon-s3-using-aws-privatelink/
+* [AWS blog post](https://aws.amazon.com/blogs/networking-and-content-delivery/secure-hybrid-access-to-amazon-s3-using-aws-privatelink/)
+
+# Assumptions
+* This repository assumes that none of the resources in the infra folder are deployed within the organization which is unrealistic for the "real world". Which is why this repository should be used as sample code only. 
+* This architecture assumes that a Direct Connect or Site-to-Site connection exists, but no example code is provided for either.
+
 
 
 
@@ -25,6 +30,6 @@ Welcome! This repository contains _example_ code on how to create hybrid connect
 
 # Apply new code
 Navigate to the file path that the code repository was pulled to in command prompt or terminal (Mac)
-* Run `terraform init`this will initialize terraform for the given enviromnet
-* Run `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
-* Run `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
+* `terraform init`this will initialize terraform for the given enviromnet
+*  `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
+*  `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
