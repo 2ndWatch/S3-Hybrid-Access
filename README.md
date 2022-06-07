@@ -31,5 +31,5 @@ Welcome! This repository contains _example_ code on how to create hybrid connect
 # Apply new code
 Navigate to the file path that the code repository was pulled to in command prompt or terminal (Mac)
 * `terraform init`this will initialize terraform for the given enviromnet
-*  `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
-*  `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
+* `terraform plan --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to validate code changes are expected.
+* `terraform apply --lock=false --var-file=environments/{enviroment}-{region}.tfvars` to execute new code in the enviroment
