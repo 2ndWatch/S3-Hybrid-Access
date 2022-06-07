@@ -1,14 +1,14 @@
 locals {
-  base_name = join("-", ["jacob", var.environment, var.region])
+  base_name = join("-", ["example", var.environment, var.region])
 }
 
 terraform {
   required_version = ">= 0.12"
   backend "s3" {
-    region = "us-east-1"
-    bucket = "jacob-sandbox-tf-state"
-    key    = "s3/jacob-sandbox-tf-state"
-    profile = "jacob-sandbox"
+    region = ""
+    bucket = ""
+    key    = ""
+    profile = ""
   }
 }
 

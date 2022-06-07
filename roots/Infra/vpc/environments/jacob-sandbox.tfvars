@@ -1,22 +1,22 @@
-region = "us-east-1"
+region = ""
 
-role_arn = "arn:aws:iam::743283756998:role/network"
+role_arn = ""
 
-environment = "snd"
+environment = ""
 
-application_name = "citi-example"
+application_name = ""
 
-vpc_cidr = "10.1.0.0/16"
+vpc_cidr = ""
 
 azs = ["us-east-1a", "us-east-1b", "us-east-1c"]
 
-private_subnets = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
+private_subnets = []
 
-database_subnets = ["10.1.4.0/24", "10.1.5.0/24", "10.1.6.0/24"]
+database_subnets = []
 
-intra_subnets = ["10.1.7.0/24", "10.1.8.0/24", "10.1.9.0/24"]
+intra_subnets = []
 
-public_subnets = ["10.1.10.0/24", "10.1.11.0/24", "10.1.12.0/24"]
+public_subnets = []
 
 enable_dns_support = true
 

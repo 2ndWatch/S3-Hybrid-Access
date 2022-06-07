@@ -1,14 +1,14 @@
 locals {
-  base_name = join("-", ["jacob", var.environment, var.region])
+  base_name = join("-", ["example", var.environment, var.region])
 }
 
 terraform {
   required_version = ">= 0.12"
   backend "s3" {
-    region = "us-east-1"
-    bucket = "jacob-sandbox-tf-state"
-    key    = "route53/jacob-sandbox-tf-state"
-    profile = "jacob-sandbox"
+    region = ""
+    bucket = ""
+    key    = ""
+    profile = ""
   }
 }
 
@@ -33,6 +33,30 @@ data "aws_vpc" "this" {
 data "aws_vpc_endpoint" "s3" {
   tags = {
     Name = join("-", [local.base_name, "vpce", "s3"])
+  }
+}
+
+data "aws_security_group" "r53" {
+  tags = {
+    Name = join("-", [local.base_name, "sg", "r53", "inbound", "resolver"])
+  }
+}
+
+data "aws_subnet" "intra_aza" {
+  tags = {
+    Name = join("-", [local.base_name, "vpc", "intra", "${var.region}a"])
+  }
+}
+
+data "aws_subnet" "intra_azb" {
+  tags = {
+    Name = join("-", [local.base_name, "vpc", "intra", "${var.region}b"])
+  }
+}
+
+data "aws_subnet" "intra_azc" {
+  tags = {
+    Name = join("-", [local.base_name, "vpc", "intra", "${var.region}c"])
   }
 }
 
@@ -66,5 +90,29 @@ resource "aws_route53_record" "wildcard" {
     name                   = "${lookup(data.aws_vpc_endpoint.s3.dns_entry[0], "dns_name")}"
     zone_id                = "${lookup(data.aws_vpc_endpoint.s3.dns_entry[0], "hosted_zone_id")}"
     evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_resolver_endpoint" "this" {
+  name      = join("-", [local.base_name, "r53", "inbound", "resolver"])
+  direction = "INBOUND"
+
+  security_group_ids = [
+    data.aws_security_group.r53.id
+  ]
+
+  ip_address {
+    subnet_id = data.aws_subnet.intra_aza.id
+    ip        = ""
+  }
+
+  ip_address {
+    subnet_id = data.aws_subnet.intra_azb.id
+    ip        = ""
+  }
+
+  ip_address {
+    subnet_id = data.aws_subnet.intra_azc.id
+    ip        = ""
   }
 }

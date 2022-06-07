@@ -1,5 +1,5 @@
-region = "us-east-1"
+region = ""
 
-role_arn = "arn:aws:iam::743283756998:role/network"
+role_arn = ""
 
-environment = "snd"
+environment = ""
