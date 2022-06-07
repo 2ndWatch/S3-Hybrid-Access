@@ -6,7 +6,7 @@ Welcome! This repository contains _example_ code on how to create hybrid connect
 * [AWS blog post](https://aws.amazon.com/blogs/networking-and-content-delivery/secure-hybrid-access-to-amazon-s3-using-aws-privatelink/)
 
 # Assumptions
-* This repository assumes that none of the resources in the infra folder are deployed within the organization which is unrealistic for the "real world". Which is why this repository should be used as sample code only. 
+* This repository assumes that none of the resources in the infra folder are deployed within the organization which is unrealistic for the "real world". Which is why this repository should be used as sample code or a starting point only.
 * This architecture assumes that a Direct Connect or Site-to-Site connection exists, but no example code is provided for either.
 
 
